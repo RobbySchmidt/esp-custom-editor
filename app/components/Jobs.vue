@@ -36,11 +36,34 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { MoveRight } from '@lucide/vue'
-  defineProps({
-    jobs: Object
+  const props = defineProps({
+    collection: String
   })
+
+  const { getItems } = useDirectusItems();
+
+  interface Jobs {
+    id?: string | number;
+    title: string;
+    gender: string;
+    status: string;
+    location: string;
+    employment: string;
+  }
+ 
+  const jobs = await getItems<Jobs>({
+    collection: props.collection,
+    params: {
+      filter: {
+        status: {
+          _eq: 'published'
+        }
+      }
+    }
+  });
+    
 </script>
 
 <style scoped>

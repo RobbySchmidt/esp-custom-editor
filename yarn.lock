@@ -883,7 +883,7 @@
     unctx "^2.5.0"
     untyped "^2.0.0"
 
-"@nuxt/kit@^3.17.4":
+"@nuxt/kit@^3.0.0", "@nuxt/kit@^3.17.4":
   version "3.21.6"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.21.6.tgz#65dae6ecd1f02bae5befce7d0031ff32cfe0364c"
   integrity sha512-5VOwxUcoM/z6w4c75hQrikHpY+TzjTLZQ+QnuO7KajyGx0IJBLVy1lw25oy79leF+GgyjJJO1cHfUfWeuEDCzA==
@@ -3984,6 +3984,13 @@ nth-check@^2.0.1:
   integrity sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==
   dependencies:
     boolbase "^1.0.0"
+
+nuxt-directus@5.7.0:
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/nuxt-directus/-/nuxt-directus-5.7.0.tgz#811eb07e63f8b81c2a75541c61a5e49a8ffaa1b3"
+  integrity sha512-hoNXbhQ8UgDrCXqzqxC0wngi64AVqYYGGU/bwylgZWbKyU0m6kyNQVLGuQuXmFbogr2WMaw+FtXSgLz+DS32hA==
+  dependencies:
+    "@nuxt/kit" "^3.0.0"
 
 nuxt@^4.4.6:
   version "4.4.6"

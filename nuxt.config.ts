@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     ],
   },
 
-  modules: ["shadcn-nuxt", "@vueuse/nuxt"],
+  modules: ["shadcn-nuxt", "@vueuse/nuxt", "nuxt-directus"],
    shadcn: {
     /**
      * Prefix for all the imported component.
@@ -25,5 +25,12 @@ export default defineNuxtConfig({
      * @default "@/components/ui"
      */
     componentDir: '@/components/ui'
+  },
+  runtimeConfig: {
+    public: {
+      directus: {
+        url: process.env.DIRECTUS_URL
+      }
+    }
   }
 });
