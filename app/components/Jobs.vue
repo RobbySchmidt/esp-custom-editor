@@ -1,7 +1,6 @@
 <template>
   <div class="container-main grid md:grid-cols-2 xl:grid-cols-3 gap-4">
     <NuxtLink
-      v-if="jobs"
       v-for="job in jobs"
       :key="job.id"
       :to="job.id"
@@ -44,7 +43,7 @@
 
   const { getItems } = useDirectusItems();
 
-  interface Jobs {
+  interface Job {
     id: string;
     title: string;
     gender: string;
@@ -52,18 +51,21 @@
     location: string;
     employment: string;
   }
- 
-  const jobs = await getItems<Jobs>({
-    collection: props.collection,
-    params: {
-      filter: {
-        status: {
-          _eq: 'published'
+
+  const { data: jobs } = await useAsyncData(
+    `jobs-${props.collection}`,
+    () => getItems<Job>({
+      collection: props.collection,
+      params: {
+        filter: {
+          status: {
+            _eq: 'published'
+          }
         }
       }
-    }
-  });
-    
+    })
+  );
+
 </script>
 
 <style scoped>
