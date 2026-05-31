@@ -93,9 +93,9 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: #2E58F3;
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
+  --secondary: #C3FBFF;
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
@@ -160,5 +160,8 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  .container-main {
+    @apply max-w-[1200px] mx-auto px-4 md:px-8 xl:px-0
   }
 }
