@@ -38,14 +38,14 @@
 
 <script setup lang="ts">
   import { MoveRight } from '@lucide/vue'
-  const props = defineProps({
-    collection: String
-  })
+  const props = defineProps<{
+    collection: string
+  }>()
 
   const { getItems } = useDirectusItems();
 
   interface Jobs {
-    id?: string | number;
+    id: string;
     title: string;
     gender: string;
     status: string;
