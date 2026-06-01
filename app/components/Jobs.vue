@@ -3,7 +3,7 @@
     <NuxtLink
       v-for="job in jobs"
       :key="job.id"
-      :to="job.id"
+      :to="'/jobs/' + job.slug"
       class="bg-primary py-6 px-8 rounded-md text-white hover:bg-secondary hover:text-primary duration-300 ease-in-out xl:cursor-pointer group">
       <h2
         v-if="job.title" 
@@ -45,6 +45,7 @@
 
   interface Job {
     id: string;
+    slug: string;
     title: string;
     gender: string;
     status: string;
