@@ -164,4 +164,14 @@
   .container-main {
     @apply max-w-[1200px] mx-auto px-4 md:px-8 xl:px-0
   }
+
+  .list-style {
+    ul {
+      @apply border-t border-primary
+    }
+  
+    li {
+      @apply border-b border-primary py-2
+    }
+  }
 }

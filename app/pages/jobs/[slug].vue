@@ -55,10 +55,48 @@
               Standort erkunden
             </NuxtLink>
           </span>
-
         </div>
-
       </div>
+    </div>
+
+    <div class="px-4 md:px-8 xl:px-4 py-f-24 grid lg:grid-cols-2 lg:place-items-center gap-f-12 lg:gap-0">
+      <img 
+        v-if="job?.image"
+        :src="getAssetUrl() + job?.image?.filename_disk" 
+        :alt="job?.location"
+        class="block w-full">
+
+        <div 
+          v-if="job?.description"
+          class="lg:px-f-24 [&_h2]:font-medium [&_h2]:text-f-3xl [&_h2]:mb-f-8"
+          v-html="job?.description">
+        </div>
+    </div>
+
+    <div class="bg-primary xl:rounded-md xl:max-w-[1500px] mx-auto">
+      <div 
+        class="container-main text-white [&_h3]:font-medium [&_h3]:text-f-3xl [&_h3]:mb-f-8 py-f-24"
+        v-if="job?.responsibilities"
+        v-html="job?.responsibilities">
+      </div>
+    </div>
+
+    <div 
+      class="container-main [&_h3]:font-medium [&_h3]:text-f-3xl [&_h3]:mb-f-8 pt-f-24 list-style"
+      v-if="job?.requirements"
+      v-html="job?.requirements">
+    </div>
+
+    <div 
+      class="container-main [&_h3]:font-medium [&_h3]:text-f-3xl [&_h3]:mb-f-8 py-f-24 list-style"
+      v-if="job?.benefits"
+      v-html="job?.benefits">
+    </div>
+    <div class="container-main">
+      <Button class="group">
+        <span>Jetzt bewerben</span>
+        <MoveRight class="w-4.5 group-hover:translate-x-1 duration-300 ease-in-out"/>
+      </Button>
     </div>
   </div>
 </template>
@@ -68,17 +106,23 @@
   const { getItems } = useDirectusItems();
 
   import { MapPin, Clock3, CircleUserRound, Ticket, MoveRight, Map } from '@lucide/vue';
+  import type { DirectusImage } from '~/types/directus';
 
   interface Job {
     id: string;
     slug: string;
     title: string;
+    description: string;
+    responsibilities: string;
+    requirements: string;
+    benefits: string;
     gender: string;
     status: string;
     location: string;
     employment: string;
     experienceLevel: string;
     contractType: string;
+    image: DirectusImage | null;
   }
 
   const { data: job } = await useAsyncData(
@@ -87,6 +131,7 @@
       const items = await getItems<Job>({
         collection: 'jobs',
         params: {
+          fields: ['*', 'image.*'],
           filter: {
             status: {
               _eq: 'published'

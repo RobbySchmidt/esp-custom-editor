@@ -11,6 +11,10 @@ export default defineNuxtConfig({
     ],
   },
 
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+  },
+
   modules: ["shadcn-nuxt", "@vueuse/nuxt", "nuxt-directus"],
    shadcn: {
     /**
